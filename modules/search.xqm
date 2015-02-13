@@ -21,7 +21,7 @@ declare namespace oclc-sru = "http://www.loc.gov/zing/srw/";
 declare namespace wb = "http://libserv6.princeton.edu/exist/apps/workbench";
 
 declare variable $wb-search:oclc-uri := "http://www.worldcat.org/webservices/catalog/search/sru?query=";
-declare variable $wb-search:oclc-key := "YOUR KEY HERE";
+declare variable $wb-search:oclc-key := "&amp;wskey=YOUR KEY HERE";
 
 (:~
 : Accepts an XML document submitted from the XForms interface and uses it to query the WorldCat Search API.
@@ -44,8 +44,8 @@ function wb-search:oclc-search($query as document-node()) as element()* {
     
     (: Assign POSTed values to variables. :)
     let $title := $query//wb:title        
-    let $persname := $query//wb:persname                  
-    let $corpname := $query//wb:corpname                  
+    let $persname := $query//wb:persName                  
+    let $corpname := $query//wb:corpName                  
     let $isbn := $query//wb:isbn                  
     let $issn := $query//wb:issn                                     
     let $sn := $query//wb:sn

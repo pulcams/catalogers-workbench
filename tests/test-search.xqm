@@ -9,7 +9,7 @@ xquery version "3.0";
  
 module namespace wb-test-search = "http://libserv6.princeton.edu/exist/apps/workbench/test/search";
  
-import module namespace wb-search = "http://libserv6.princeton.edu/exist/apps/workbench/search" at "../../modules/search.xqm";
+import module namespace wb-search = "http://libserv6.princeton.edu/exist/apps/workbench/search" at "../modules/search.xqm";
  
 declare namespace test = "http://exist-db.org/xquery/xqsuite"; 
 declare namespace wb = "http://libserv6.princeton.edu/exist/apps/workbench";
@@ -52,6 +52,8 @@ function wb-test-search:_test-teardown() {
  : Given an XML document with elements containing search strings,
  : run a search against the World Search API (using SRU query params).
  : Test to see whether one or more MARCXML records has been returned.
+ :::: If a MARCXML record has been returned,  
+ :::: the result should have a child <record> element.
  :)
 
 declare
@@ -66,7 +68,9 @@ function wb-test-search:oclc-test-for-results($query-path as xs:string) {
 (:~
  : Given an XML document with elements containing search strings,
  : run a search against the World Search API (using SRU query params).
- : Test for a server response of 200.
+ : Test for a server response code of 200.
+ :::: If the server response code is not 200,  
+ :::: an <error> element with an error message should be produced.
  :)
 
 declare
@@ -82,6 +86,8 @@ function wb-test-search:oclc-test-for-server($query-path as xs:string) {
  : Given an XML document with elements containing search strings,
  : run a search against the World Search API (using SRU query params).
  : Test for a search with no results.
+ :::: If no MARCXML records are returned,
+ :::: a <message> element should be returned, notifying the user that there were no results. 
  :)
  
 declare

@@ -7,7 +7,7 @@ import module namespace inspect = "http://exist-db.org/xquery/inspection";
 import module namespace wb-test-search = "http://libserv6.princeton.edu/exist/apps/workbench/test/search" at "test-search.xqm";
 
 let $test-search-modules := (
-    xs:anyURI("/db/apps/workbench/tests/search/test-search.xqm")
+    xs:anyURI("/db/apps/workbench/tests/test-search.xqm")
 )
 let $test-search-functions := $test-search-modules ! inspect:module-functions(.)
 return
