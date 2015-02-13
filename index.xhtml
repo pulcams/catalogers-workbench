@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<?xml-stylesheet type="text/xsl" href="http://localhost:8080/exist/apps/xsltforms/xsltforms.xsl"?>
+<?xsltforms-options debug="yes"?>
+<?css-conversion no?>
+<?xml-model href="http://www.oxygenxml.com/1999/xhtml/xhtml-xforms.nvdl" schematypens="http://purl.oclc.org/dsdl/nvdl/ns/structure/1.0"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xf="http://www.w3.org/2002/xforms"
+  xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:wb="http://libserv6.princeton.edu/exist/apps/workbench"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <meta:meta xmlns:meta="http://www.xsmiles.org/2002/metadata" name="XForms Controls"
+    description="Tests all XForms controls in single document"/>
+  <head>
+    <title>Cataloger's Workbench</title>
+    <xf:model>
+      <xf:instance xmlns="" id="query">
+        <wb:query>
+          <wb:persName></wb:persName>
+          <wb:corpName></wb:corpName>
+          <wb:title></wb:title>
+          <wb:isbn></wb:isbn>
+          <wb:issn></wb:issn>
+          <wb:sn></wb:sn>
+        </wb:query>
+      </xf:instance>
+      <xf:instance xmlns="" id="default">
+        <results>Test</results>
+      </xf:instance>
+      <xf:submission id="search" resource="/exist/restxq/query" method="post" ref="instance('query')" targetref="instance('default')" replace="instance">        
+          <xf:message ev:event="xforms-submit-done" level="ephemeral">Success.</xf:message>               
+          <xf:message ev:event="xforms-submit-error" level="modal">
+            Submission error (<xf:output value="event('response-status-code')"/>)
+          </xf:message>        
+      </xf:submission>
+    </xf:model>
+  </head>
+  <body>
+    
+    <xf:group ref="instance('query')">
+      <xf:input ref="wb:title" incremental="false" id="title">
+        <xf:label>Title</xf:label>
+      </xf:input>
+      <xf:submit submission="search">
+        <xf:label>Search</xf:label>        
+      </xf:submit>
+    </xf:group>
+    
+  </body>
+</html>

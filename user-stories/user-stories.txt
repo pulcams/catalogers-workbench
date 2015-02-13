@@ -1,0 +1,31 @@
+Cataloger's Workbench User Stories
+Revised: 2015-02-13
+
+Data Entry Stories
+
+General Cataloging Stories
+1. As a user cataloging books, journals, etc., I want to search WorldCat for catalog records so that I can save time by finding LC and member copy. 
+	Search by defined fields
+		ISBN, ISSN, standard number, title, personal name, and corporate/conference name
+	Sort results for quality and completeness
+		LC copy, PCC, full-level member copy, incomplete member copy, non-English records, etc.
+2. As a user cataloging books, journals, etc., I want to select results from WorldCat search. 
+	For LC/PCC records or full-level member copy, pre-select the record
+	For "bad" member copy, attempt to normalize it (ensuring that data fields are consistent with control fields, etc.
+	For non-English records, attempt to extract enough relevant info to create a well-structured brief record in English
+3. As a user cataloging books, journals, etc., I want to save results from WorldCat search so that I can edit or accept a catalog record. 
+	Save as MARCXML, convert to binary MARC for import into Voyager
+	To edit records, convert data to BF using LC conversion scripts, then load data into XForm
+4. As a user cataloging books, journals, etc., I want to save data from the Web form. 
+	Save to triplestore as BF
+	Convert BF to MARCXML and save to eXist
+		Convert MARCXML to binary MARC for import into Voyager
+5. As a user cataloging books, journals, etc., if no records in WorldCat, I want to query public APIs like Open Library for available metadata. 
+	If available, load imported metadata into Web form to create a brief record
+6. As a user cataloging books, journals, etc., if no external data available, I want to produce a blank Web form so that I can create a new bibliographic description. 
+
+DVD Cataloging Stories
+1. As a user cataloging DVDs, if no records in WorldCat, I want to query DBpedia and/or other APIs (like OMDb) for available metadata. 
+	If available, load imported metadata into Web form to create a brief record
+2. As a user cataloging DVDs, if no external data available, I want to produce a blank Web form so that I can create a new bibliographic description. 
+
