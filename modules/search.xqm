@@ -46,7 +46,7 @@ function wb-search:oclc-search($query as document-node()) as element()* {
     let $title := $query//wb:title        
     let $persname := $query//wb:persname                  
     let $corpname := $query//wb:corpname                  
-    let $isbn := $query//wb                  
+    let $isbn := $query//wb:isbn                  
     let $issn := $query//wb:issn                                     
     let $sn := $query//wb:sn
                      
